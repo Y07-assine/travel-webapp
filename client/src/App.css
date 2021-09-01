@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&family=Raleway&family=Rubik&display=swap');
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; 
+  scroll-behavior: smooth;  
+  width: 100%;
+  height: 100%;
+  overflow-x: clip !important;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+
+.font-baloo{
+    font-family: "Baloo Thambi 2",cursive;
+  }
+  
+  .font-rale{
+    font-family: "Raleway",cursive;
+  }
+  
+  .font-rubik{
+    font-family: "Rubik",cursive;
+  }
+  .font-crimson{
+    font-family: 'Crimson Pro', serif;
+  }
+  
+  .container{
+    max-width: 1240px;
+    margin: auto;
+  }
+  .margin{
+      margin-left: 3rem;
+      margin-right: 3rem;
+      margin-top: 1rem;
+  }
+  header {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    height: 75vh;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  header video {
+    position: absolute;
+    min-height: 100%;
+    left: 50%;
+    top:50%;
+    min-width: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+  header .container {
+    position: relative;
+    z-index: 2;
+  }
+  header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .nav{
+    background: transparent;
+    height: 5rem;
+  }
+  
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(5, 5, 5);
+  }
+.nav-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  .nav .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav__list{
+    display: flex;
+    justify-content: space-around;
+  }
+  .nav__item{
+    margin-right: 2rem;
+  }
+  .nav .item {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 20px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav__hamburger {
+    display: none;
+    cursor: pointer;
+  }
+  .nav-icon{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  .scroll_top{
+    position: fixed;
+    right: 15px;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgb(35, 180, 113);
+    box-shadow: 0 0 10px rgba(0,0,0,.25);
+    border: none;
+    display: none;
+    transition: all .4s;
+  }
+  .scroll_top svg{
+    z-index: 1;
+  }
+  .scroll_top.active{
+    bottom: 32px;
+    pointer-events: auto;
+    display: block;
+    opacity: 1;
+  }
+  @media only screen and (max-height:100px) {
+    .scroll_top{
+      display: flex;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .nav__hamburger {
+      display: block;
+    }
+    .nav__list,.menu{
+      flex-direction: column;
+      align-items: start;
+      color: white;
+      justify-content: center;
+      padding: 1.6rem 1rem;
+  
+    }
+    .nav__item{
+      margin-top: 2rem;
+      font-size: 20px;
+    }
+    .nav-menu{
+      position: fixed;
+      top:0;
+      left: -50rem;
+      width: 0;
+      background-color: black;
+      z-index: 9999;
+  
+    }
+    .nav-menu.open{
+      left: 0;
+      width: 70% !important;
+      height: 100%;
+    }
+    .margin{
+        margin: 1rem;
+    }
+  
+  }
+ .content-title,.content-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1;
+}
+.content-title .title{
+    color: white;
+    font-size: 58px;
+    z-index: 1;
+    margin-bottom: 0;
+    font-family: "Baloo Thambi 2",cursive;;
+}
+.content-button .see-more{
+    color: white;
+    background-color: rgb(1, 88, 88);
+    border: none;
+    border-radius: .3rem;
+    font-size: 22px;
+    z-index: 1;
+    padding: .5rem;
+    font-family: "Baloo Thambi 2",cursive;;
+}
+
+@media only screen and (max-width: 850px) {
+    .content-title .title{
+        font-size: 48px;
+    }
+    .content-button .see-more{
+        font-size: 22px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .content-title .title{
+        font-size: 38px;
+    }
+    .content-button .see-more{
+        font-size: 22px;
+    }
+}
+@media only screen and (max-width: 460px) {
+    .content-title{
+        margin-top: 5rem;
+    }
+    .content-title .title{
+        font-size: 28px;
+    }
+    .content-button .see-more{
+        font-size: 12px;
+    }
+}
+
+  .logo {
+    width: 200px;
+    color: white;
+  }

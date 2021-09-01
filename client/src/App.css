@@ -205,6 +205,9 @@ ul {
     color: white;
     z-index: 1;
 }
+.content-title{
+  margin-top: 5rem;
+}
 .content-title .title{
     color: white;
     font-size: 58px;
@@ -220,7 +223,7 @@ ul {
     font-size: 22px;
     z-index: 1;
     padding: .5rem;
-    font-family: "Baloo Thambi 2",cursive;;
+    font-family: "Baloo Thambi 2",cursive;
 }
 
 @media only screen and (max-width: 850px) {
@@ -255,3 +258,30 @@ ul {
     width: 200px;
     color: white;
   }
+
+  .category__card{
+    border-radius: 1rem;
+    margin: 0.5rem;
+    position: relative;
+    display: block;
+    border-radius: 8px;
+    background-color: #fff;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0 -0.2rem 0.5rem rgb(0 0 0 / 10%);
+  }
+
+.category{
+  margin-top: 3rem;
+  background: linear-gradient(
+    0deg
+    , #fff, transparent);
+}
+
+.category h3{
+  font-size: 2.5rem;
+  font-weight: 500;
+  font-family: "Baloo Thambi 2",cursive;
+  color: #005870;
+  margin-bottom: 2rem;
+}

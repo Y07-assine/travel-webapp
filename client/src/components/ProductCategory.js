@@ -39,19 +39,22 @@ const ProductCategory=()=>{
         ]
     }
     return(
-        <section className="category" style={{ background:`url("/images/section.jpg")` }}>
+        <>
+        <section className="category" >
             
             <div className="container">
             <h3>What do you need for you trip?</h3>
             <Slider {...settings}>
-                <CategoryCard image="/images/tent.jpg" title="tent" />
-                <CategoryCard image="/images/tent.jpg" title="tent" />
-                <CategoryCard image="/images/tent.jpg" title="tent" />
-                <CategoryCard image="/images/tent.jpg" title="tent" />
-                <CategoryCard image="/images/tent.jpg" title="tent" />
+                <CategoryCard image="/images/tent.jpg" title="TENT" />
+                <CategoryCard image="/images/tent.jpg" title="TENT" />
+                <CategoryCard image="/images/tent.jpg" title="TENT" />
+                <CategoryCard image="/images/tent.jpg" title="TENT" />
+                <CategoryCard image="/images/tent.jpg" title="TENT" />
             </Slider>
             </div>
         </section>
+        
+        </>
     )
 }
 

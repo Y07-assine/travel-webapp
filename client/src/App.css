@@ -51,7 +51,6 @@ ul {
   .margin{
       margin-left: 3rem;
       margin-right: 3rem;
-      margin-top: 1rem;
   }
   header {
     position: relative;
@@ -255,8 +254,8 @@ ul {
 }
 
   .logo {
-    width: 200px;
-    color: white;
+    margin-top: 1rem;
+    width: 180px;
   }
 
   .category__card{

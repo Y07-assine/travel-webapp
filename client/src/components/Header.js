@@ -15,9 +15,9 @@ const Header = ()=>{
             </div>
             <div className="container nav">
                 <div className="navContainer margin">
-                    <a href="/">
-                        <img src="" alt="Safar" />
-                    </a>
+                    <div>
+                        <img src="/images/logo6.png" alt="Safar" className="logo" />
+                    </div>
                     <div className={click ? 'nav-menu open' :'nav-menu'}>
                         <div className="menu">
                             <a href="/" className="item">Plan your trip</a>

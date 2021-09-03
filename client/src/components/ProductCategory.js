@@ -3,29 +3,22 @@ import CategoryCard from './CategoryCard';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
-import axios from 'axios';
-import { categoriesURL } from '../Constant';
+import { useQuery,gql } from '@apollo/client';
+import {CircularProgress} from '@material-ui/core';
+
+
+const categories = gql`
+    query getCategories{
+        categories{
+        name,
+        id,
+        image{url}
+        }
+    }
+`
 
 const ProductCategory=()=>{
-    const [data,setData] = useState(null);
-    const [error,setError] = useState(null);
-    const [loading,setLoading] = useState(true);
-    useEffect(() => {
-        const fetchData = async ()=>{
-            setLoading(true);
-            try{
-                const res = await axios.get(categoriesURL);
-                const json = await res.json()
-
-                setData(json);
-                console.log(data); 
-                setLoading(false);
-            }catch(error){
-                setError(error);setLoading(false);
-            }
-        }
-        fetchData();
-    }, [])
+    const {loading,error,data} = useQuery(categories)
     const settings = {
         dots: true,
         infinite: true,
@@ -62,16 +55,17 @@ const ProductCategory=()=>{
     return(
         <>
         <section className="category" >
-            
             <div className="container">
-            <h3>What do you need for you trip?</h3>
-            <Slider {...settings}>
-                <CategoryCard image="/images/tent.jpg" title="TENT" />
-                <CategoryCard image="/images/tent.jpg" title="TENT" />
-                <CategoryCard image="/images/tent.jpg" title="TENT" />
-                <CategoryCard image="/images/tent.jpg" title="TENT" />
-                <CategoryCard image="/images/tent.jpg" title="TENT" />
-            </Slider>
+                <h3>What do you need for you trip?</h3>
+            {loading ? 
+                <CircularProgress />
+            :
+                <Slider {...settings}>
+                    {data.categories.map(cat=>(
+                        <CategoryCard key={cat.id} image={`http://localhost:1337${cat.image.url}`} title={cat.name} />
+                    ))}
+                </Slider>
+            }
             </div>
         </section>
         

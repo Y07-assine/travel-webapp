@@ -1,10 +1,31 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import CategoryCard from './CategoryCard';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
+import axios from 'axios';
+import { categoriesURL } from '../Constant';
 
 const ProductCategory=()=>{
+    const [data,setData] = useState(null);
+    const [error,setError] = useState(null);
+    const [loading,setLoading] = useState(true);
+    useEffect(() => {
+        const fetchData = async ()=>{
+            setLoading(true);
+            try{
+                const res = await axios.get(categoriesURL);
+                const json = await res.json()
+
+                setData(json);
+                console.log(data); 
+                setLoading(false);
+            }catch(error){
+                setError(error);setLoading(false);
+            }
+        }
+        fetchData();
+    }, [])
     const settings = {
         dots: true,
         infinite: true,

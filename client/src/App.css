@@ -27,7 +27,9 @@ ul {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
-
+.font-size-24{
+  font-size: 24px;
+}
 
 .font-baloo{
     font-family: "Baloo Thambi 2",cursive;
@@ -346,7 +348,143 @@ ul {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+.product__infos{
+  height: 150px;
+}
+#product {
+  width: 100%;
+  height: 250px;
+}
+@media only screen and (max-width: 425px) {
+  .product__infos {
+      height: 180px;
+      padding: 0.5rem;
+      font-size:12px;
+  }
+  .product-title {
+      font-size: 15px;
+  }
+  .product__brand{
+      margin-bottom: 2rem;
+  }
+}
+.product-discount{
+  color: #151515;
+  font-size: 12px;
+  letter-spacing: .09px;
+  line-height: 15px;
+  margin-right: 8px;
+  text-decoration: line-through;
+}
+.product__brand {
+  font-family: Muli,Arial,sans-serif;
+  color: #575756;
+  font-size: 12px;
+  line-height: 19px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.product-title {
+  text-transform: none;
+  display: block;
+  margin-bottom: 8px;
+  overflow: hidden;
+  width: 100%;
+  font-weight: 300;
+  color: #434343;
+  height: 45px;
+  line-height: 2rem;
+  font-size: 20px;
+}
 
+.list_product{
+  display:inline-flex;
+  justify-content:normal;
+  margin-top:2rem;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  background-color: white;
+  padding: 7px;
+}
+@media only screen and (max-width:1200px) {
+  .grid-container {
+      grid-template-columns: auto auto;
+  }
+}
+@media only screen and (max-width:630px) {
+  .grid-container {
+      grid-template-columns: auto;
+  }
+}
+
+  .grid-container > div {
+      background-color: white;
+      text-align: center;
+  }
+
+.product {
+  width: 100%;
+  height: 450px;
+  transition: transform .5s ease;
+}
+.product{
+  border-radius: 1rem;
+margin: 0.5rem;
+position: relative;
+display: block;
+border-radius: 8px;
+background-color: #fff;
+height: 100%;
+overflow: hidden;
+box-shadow: 0 -0.2rem 2rem rgb(0 0 0 / 10%);
+}
+
+.item{
+  margin: 1rem;
+}
+.product img {
+   width: 100%;
+  height: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.rating {
+   color: var(--second-Color);
+}
+
+.price {
+  margin-top: 1rem;
+  color: #ed5565;
+}
+
+.price_range {
+  margin-left: 2rem;
+  margin-top: 2px;
+  color:var(--second-Color);
+
+}
+
+.count_product{
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.sort{
+  width: 200px;
+  height: 40px;
+  font-size: 1.5rem;
+}
+.productList{
+  margin-top:2rem;
+}
 .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
   position: relative;
   min-height: 1px;

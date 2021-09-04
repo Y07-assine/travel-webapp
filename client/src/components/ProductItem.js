@@ -19,12 +19,12 @@ const ProductItem =({product})=>{
                         <div className="price py-2">
                             {product.discount_price ? (
                                 <>  
-                                    <div><strong>{product.price} Dhs</strong></div>
-                                    <div className="product-discount">{product.discount_price} Dhs</div>
+                                    <div><strong>{product.discount_price} Dhs</strong></div>
+                                    <div className="product-discount">{product.price} Dhs</div>
                                 </>
                             ):
                                 <>
-                                    <span><strong>{product.price} Dhs</strong></span>
+                                    <span><strong>{product.discount_price} Dhs</strong></span>
                                 </>
                             }
                             

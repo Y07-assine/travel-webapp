@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import Icon from './Icon';
+import {Link} from 'react-router-dom';
 
 const Header = ()=>{
     const [click,setClick]= useState(false);
@@ -16,7 +17,7 @@ const Header = ()=>{
             <div className="container nav">
                 <div className="navContainer margin">
                     <div>
-                        <img src="/images/logo6.png" alt="Safar" className="logo" />
+                        <Link to="/"><img src="/images/logo6.png" alt="Safar" className="logo" /></Link>
                     </div>
                     <div className={click ? 'nav-menu open' :'nav-menu'}>
                         <div className="menu">
@@ -40,7 +41,7 @@ const Header = ()=>{
                     <h3 className="title">Start your adventure now!</h3><br />
                 </div>
                 <div className="content-button">
-                    <button className="see-more" >See more</button>
+                    <button className="see-more"><Link to={'/products'}>See more</Link></button>
                 </div>
             </div>
         </header>

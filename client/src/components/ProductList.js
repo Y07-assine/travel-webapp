@@ -2,6 +2,11 @@ import React ,{useEffect,useState} from 'react';
 import {CircularProgress} from '@material-ui/core';
 import ProductItem from './ProductItem';
 import { useQuery,gql } from '@apollo/client';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const products = gql`
     query getProducts{
@@ -17,7 +22,20 @@ const products = gql`
 
 const ProductList = () =>{
     const {loading,error,data} = useQuery(products)
-    console.log(data)
+    const [order, setOrder] = useState('Pertinence');
+    const [open, setOpen] = useState(false);
+
+    const handleChange = (event) => {
+        setOrder(event.target.value);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
     return(
         <>
         <section className="productList">
@@ -29,23 +47,38 @@ const ProductList = () =>{
                     <div className="col-sm-9">
                         <div className="count_product">
                         <h4 className="font-size-24 font-baloo"> Products</h4>
-                        <select  className="sort form-control">
-                            <option disabled>Trier par:</option>
-                            <option value="p">Pertinence</option>
-                            <option value="d">Prix(Décroissant)</option>
-                            <option value="c">Prix(Croissant)</option>
-                        </select>
+                        <FormControl className="form-control">
+                            <InputLabel id="demo-controlled-open-select-label">Order By:</InputLabel>
+                            <Select
+                            labelId="demo-controlled-open-select-label"
+                            id="demo-controlled-open-select"
+                            open={open}
+                            onClose={handleClose}
+                            onOpen={handleOpen}
+                            value={order}
+                            onChange={handleChange}
+                            >
+                            <MenuItem value="">
+                                <em>Pertinence</em>
+                            </MenuItem>
+                            <MenuItem value={20}>Price(Descending)</MenuItem>
+                            <MenuItem value={30}>Price(Crescent)</MenuItem>
+                            </Select>
+                        </FormControl>
                         </div>
                         <hr />
-                        {loading && (
+                        {loading ? (
                             <CircularProgress />
-                        )}
-                        <div className="list_product grid-container py-5">
-                            {data.products.map((product)=>(
-                                <ProductItem product={product} key={product.id}/>
-                                                                        
-                            ))}
-                        </div>
+                        ):
+                        <>
+                            <div className="list_product grid-container py-5">
+                                {data.products.map((product)=>(
+                                    <ProductItem product={product} key={product.id}/>                                           
+                                ))}
+                            </div>
+                        </>
+                        }
+                        
                     </div>
                 </div>
             </div>

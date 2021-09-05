@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './Icon';
 
 const ProductItem =({product})=>{
         return(
@@ -10,11 +11,11 @@ const ProductItem =({product})=>{
                         <h3 className="product-title">{product.name} </h3>
                         <div className="product__brand" style={{height: 20.4+'px'}}>brand</div>
                         <div className="rating color-primary font-size-12">
-                            <span><em className="fas fa-star"></em></span>
-                            <span><em className="fas fa-star"></em></span>
-                            <span><em className="fas fa-star"></em></span>
-                            <span><em className="fas fa-star"></em></span>
-                            <span><em className="fas fa-star"></em></span>
+                            <Icon name="star-full" size={10} />
+                            <Icon name="star-full" size={10} />
+                            <Icon name="star-full" size={10} />
+                            <Icon name="star-full" size={10} />
+                            <Icon name="star-full" size={10} />
                         </div>
                         <div className="price py-2">
                             {product.discount_price ? (

@@ -1,5 +1,5 @@
 import React ,{useEffect,useState} from 'react';
-import {CircularProgress} from '@material-ui/core';
+import {Checkbox, CircularProgress} from '@material-ui/core';
 import ProductItem from './ProductItem';
 import { useQuery,gql } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,15 +8,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+
 const products = gql`
     query getProducts{
         products{
-        name,
-        id,
-        price,
-        discount_price,
-        image{url}
-        }
+            name,
+            id,
+            price,
+            discount_price,
+            image{url}
+        },
+        categories{
+            name,
+            id
+          }
     }
 `
 
@@ -27,8 +32,21 @@ const ProductList = () =>{
 
     const handleChange = (event) => {
         setOrder(event.target.value);
+        listProducts();
     };
+    const listProducts=()=>{
+        
+        if(order !== 'p'){
+            data.products.sort((a,b)=>(order === 'd')?
+            (a.price < b.price?1:-1):
+            (a.price > b.price?1:-1)
+            );
+        }else{
+            data.products.sort((a,b)=>(a.id>b.id?1:-1));
+        }
+        return data;
 
+}
     const handleClose = () => {
         setOpen(false);
     };
@@ -36,17 +54,27 @@ const ProductList = () =>{
     const handleOpen = () => {
         setOpen(true);
     };
+
     return(
         <>
         <section className="productList">
             <div className="container ">
                 <div className="row">
                     <div className="col-sm-3">
-                        <h4 className="font-size-24 font-baloo">FILTRER PAR</h4>
+                        <h4 className="font-size-24 font-baloo">FILTER BY :</h4>
+                        <label>Category</label><br/>
+                        {data &&
+                            data.categories.map(cat=>(
+                                <>
+                                    <Checkbox />
+                                    <label>{cat.name}</label><br />
+                                </>
+                            ))
+                        }
                     </div>
                     <div className="col-sm-9">
                         <div className="count_product">
-                        <h4 className="font-size-24 font-baloo"> Products</h4>
+                        <h4 className="font-size-24 font-rubik">{data && data.products.length} Products</h4>
                         <FormControl className="form-control">
                             <InputLabel id="demo-controlled-open-select-label">Order By:</InputLabel>
                             <Select
@@ -58,11 +86,11 @@ const ProductList = () =>{
                             value={order}
                             onChange={handleChange}
                             >
-                            <MenuItem value="">
+                            <MenuItem value="p">
                                 <em>Pertinence</em>
                             </MenuItem>
-                            <MenuItem value={20}>Price(Descending)</MenuItem>
-                            <MenuItem value={30}>Price(Crescent)</MenuItem>
+                            <MenuItem value='d'>Price(Descending)</MenuItem>
+                            <MenuItem value='c'>Price(Crescent)</MenuItem>
                             </Select>
                         </FormControl>
                         </div>

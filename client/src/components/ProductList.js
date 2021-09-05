@@ -7,6 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import {Link} from 'react-router-dom';
 
 
 const products = gql`
@@ -54,7 +55,7 @@ const ProductList = () =>{
     const handleOpen = () => {
         setOpen(true);
     };
-
+    if (error) return `Error! ${error}`;
     return(
         <>
         <section className="productList">
@@ -101,7 +102,7 @@ const ProductList = () =>{
                         <>
                             <div className="list_product grid-container py-5">
                                 {data.products.map((product)=>(
-                                    <ProductItem product={product} key={product.id}/>                                           
+                                   <Link to={`/product/${product.id}`}> <ProductItem product={product} key={product.id}/> </Link>                                          
                                 ))}
                             </div>
                         </>

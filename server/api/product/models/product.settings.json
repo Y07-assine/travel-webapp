@@ -37,8 +37,8 @@
       "type": "decimal"
     },
     "category": {
-      "model": "category",
-      "via": "products"
+      "via": "products",
+      "model": "category"
     },
     "quantity": {
       "type": "integer"

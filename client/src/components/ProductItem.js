@@ -5,8 +5,8 @@ const ProductItem =({product})=>{
         return(
             <div className="item py-2">
                 <div className="product ">
-                    <a href="#"><img src={`http://localhost:1337${product.image[0].url}`}id="product" alt={product.name} />
-                    </a><br />
+                    <img src={`http://localhost:1337${product.image[0].url}`}id="product" alt={product.name} />
+                    <br />
                     <div className="text-center product__infos">
                         <h3 className="product-title">{product.name} </h3>
                         <div className="product__brand" style={{height: 20.4+'px'}}>brand</div>

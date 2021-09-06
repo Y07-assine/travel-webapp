@@ -27,21 +27,69 @@ ul {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
+.color-primary-bg{
+  background-color:  rgb(8, 16, 87) ;
+}
+
+.font-size-12{
+  font-size: 12px;
+}
+
+.font-size-14{
+  font-size: 14px;
+}
+
+.font-size-16{
+  font-size: 16px;
+}
+
 .font-size-24{
   font-size: 24px;
 }
+.font-size-20{
+  font-size: 18px;
+}
+.font-size-30{
+  font-size: 30px;
+}
 
 .font-baloo{
-    font-family: "Baloo Thambi 2",cursive;
-  }
-  
-  .font-rale{
-    font-family: "Raleway",cursive;
-  }
-  
-  .font-rubik{
-    font-family: "Rubik",cursive;
-  }
+  font-family: "Baloo Thambi 2",cursive;
+}
+
+.font-rale{
+  font-family: "Raleway",cursive;
+}
+
+.font-rubik{
+  font-family: "Rubik",cursive;
+}
+
+.color-primary{
+  color: rgb(8, 16, 87);
+}
+.color-second{
+  color: rgba(30,140,153,0.9);
+}
+
+.color-primary-bg{
+  background:  rgb(8, 16, 87) ;
+}
+.color.second{
+  color: rgb(128, 163, 209);
+}
+.color-second-bg{
+  background: rgb(255, 255, 255);
+}
+.color-third-bg{
+  background: rgb(61, 86, 167);
+}
+.color-grey{
+  color: #888888;
+}
+.color-grey2{
+  color: rgb(39, 39, 39);
+}
   .font-crimson{
     font-family: 'Crimson Pro', serif;
   }
@@ -298,13 +346,98 @@ ul {
     0deg
     , #fff, transparent);
 }
+.productDetails .title{
+  font-size: 30px;
+  margin-bottom: auto;
+}
 
+.productDetails .description{
+  font-size: 22px;
+  line-height: 1.5;
+  font-family: "Raleway",cursive;
+  margin-bottom: auto;
+  margin-top: 1rem;
+  color: rgb(88, 88, 88);
+}
+.quantite_value{
+  display: flex;
+  justify-content: left;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.quantite__input{
+  width: 3.5rem;
+  height: 3.5rem;
+  border: hidden;
+  text-align: center;
+}
+.list__image{
+  display: flex;
+  margin-top: 1rem;
+  margin-right:3rem;
+}
+.small__image{
+  width: 60px;
+  opacity: .5;
+  margin-right:1rem;
+  box-shadow: 0 -0.2rem 0.5rem rgb(0 0 0 / 10%);
+}
+.card_image{
+  border: 2px;
+  border-color: #005870;
+}
+.btn-addTocart {
+  width: 150px;
+  height: 50px;
+  border-radius: 0.6rem;
+  background-color:#005870 ;
+  color: white;
+  margin-top: 1.5rem;
+  box-shadow: 0 5px 5px 0 #ccc;
+  transition: transform .5s ease;
+}
+.btn-addTocart:hover{
+  background-color:rgb(5, 93, 151);
+}
+.diminue_qt,
+.augmente_qt{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.2rem;
+    border: none;
+}
+.buy__spec{
+  display: flex;
+  justify-content: space-between;
+}
+.productDetails .image{
+  box-shadow: 0 -0.2rem 2rem rgb(0 0 0 / 10%);
+  width: 95%;
+  height: 350px;
+  margin-top: 3rem;
+}
+.productDetails .price{
+  font-size: 24px;
+}
+.brand{
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #888888;
+  margin-bottom: 1rem;
+}
 .category h3,.about h3{
   font-size: 2.5rem;
   font-weight: 500;
   font-family: "Baloo Thambi 2",cursive;
   color: #005870;
   margin-bottom: 2rem;
+}
+#color{
+  width: 60%;
+  height: 35px;
+  background-color:rgb(240, 240, 240);
+  box-shadow: 0 5px 5px 0 #ccc;
+  border: none;
 }
 .about h3{
   margin-bottom: 0rem !important;

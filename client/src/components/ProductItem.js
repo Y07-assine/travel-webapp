@@ -10,7 +10,7 @@ const ProductItem =({product})=>{
                     <div className="text-center product__infos">
                         <h3 className="product-title">{product.name} </h3>
                         <div className="product__brand" style={{height: 20.4+'px'}}>brand</div>
-                        <div className="rating color-primary font-size-12">
+                        <div className="rating font-size-12">
                             <Icon name="star-full" size={10} />
                             <Icon name="star-full" size={10} />
                             <Icon name="star-full" size={10} />

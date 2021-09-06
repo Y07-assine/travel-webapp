@@ -45,6 +45,15 @@
     },
     "specs": {
       "type": "richtext"
+    },
+    "colors": {
+      "collection": "color",
+      "via": "products",
+      "dominant": true
+    },
+    "brand": {
+      "model": "brand",
+      "via": "products"
     }
   }
 }

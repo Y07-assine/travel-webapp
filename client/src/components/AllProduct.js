@@ -26,7 +26,7 @@ const products = gql`
     }
 `
 
-const ProductList = () =>{
+const AllProduct = () =>{
     const {loading,error,data} = useQuery(products)
     const [order, setOrder] = useState('Pertinence');
     const [open, setOpen] = useState(false);
@@ -116,4 +116,4 @@ const ProductList = () =>{
     )
 }
 
-export default ProductList
+export default AllProduct

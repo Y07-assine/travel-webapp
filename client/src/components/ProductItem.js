@@ -11,16 +11,16 @@ const ProductItem =({product})=>{
                         <h3 className="product-title">{product.name} </h3>
                         <div className="product__brand" style={{height: 20.4+'px'}}>brand</div>
                         <div className="rating font-size-12">
-                            <Icon name="star-full" size={10} />
-                            <Icon name="star-full" size={10} />
-                            <Icon name="star-full" size={10} />
-                            <Icon name="star-full" size={10} />
-                            <Icon name="star-full" size={10} />
+                            <Icon name="star-full" size={10} color={'#005870'} />
+                            <Icon name="star-full" size={10} color={'#005870'} />
+                            <Icon name="star-full" size={10} color={'#005870'}  />
+                            <Icon name="star-full" size={10} color={'#005870'}  />
+                            <Icon name="star-full" size={10} color={'#005870'}  />
                         </div>
                         <div className="price py-2">
                             {product.discount_price ? (
                                 <>  
-                                    <div><strong>{product.discount_price} Dhs</strong></div>
+                                    <div><strong>{product.discount_price} Dhs</strong></div><br/>
                                     <div className="product-discount">{product.price} Dhs</div>
                                 </>
                             ):

@@ -1,8 +1,7 @@
-import React ,{useEffect,useState} from 'react';
-import {Checkbox, CircularProgress} from '@material-ui/core';
+import React ,{useState} from 'react';
 import ProductItem from './ProductItem';
-import { useQuery,gql } from '@apollo/client';
-import { makeStyles } from '@material-ui/core/styles';
+import { useQuery,gql} from '@apollo/client';
+import {Checkbox, CircularProgress} from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -10,9 +9,10 @@ import Select from '@material-ui/core/Select';
 import {Link} from 'react-router-dom';
 
 
+
 const products = gql`
-    query getProducts{
-        products{
+    query getProducts($sort:String!,$filter:JSON!){
+        products(sort:$sort,where:$filter){
             name,
             id,
             price,
@@ -27,27 +27,12 @@ const products = gql`
 `
 
 const AllProduct = () =>{
-    const {loading,error,data} = useQuery(products)
-    const [order, setOrder] = useState('Pertinence');
+    const {loading,error,data,refetch,networkStatus} = useQuery(products,{
+        variables:{sort:"id:desc",filter:{category:{name:"tent"}}},
+        notifyOnNetworkStatusChange: true,
+    })
     const [open, setOpen] = useState(false);
-
-    const handleChange = (event) => {
-        setOrder(event.target.value);
-        listProducts();
-    };
-    const listProducts=()=>{
-        
-        if(order !== 'p'){
-            data.products.sort((a,b)=>(order === 'd')?
-            (a.price < b.price?1:-1):
-            (a.price > b.price?1:-1)
-            );
-        }else{
-            data.products.sort((a,b)=>(a.id>b.id?1:-1));
-        }
-        return data;
-
-}
+    const [filter,setfilter] = useState([]);
     const handleClose = () => {
         setOpen(false);
     };
@@ -55,10 +40,24 @@ const AllProduct = () =>{
     const handleOpen = () => {
         setOpen(true);
     };
+    const onFilter = (e) =>{
+        if(document.getElementById(e.target.value).checked){
+            filter.push(e.target.value)
+            setfilter(filter)
+            
+        }else{
+            let value= filter.indexOf(e.target.value)
+            filter.splice(value,1)
+            setfilter(filter)
+            console.log(filter)
+            
+        }
+        
+    }
     if (error) return `Error! ${error}`;
     return(
         <>
-        <section className="productList">
+         <section className="productList">
             <div className="container ">
                 <div className="row">
                     <div className="col-sm-3">
@@ -67,7 +66,9 @@ const AllProduct = () =>{
                         {data &&
                             data.categories.map(cat=>(
                                 <>
-                                    <Checkbox />
+                                    <Checkbox value={cat.name} id={cat.name} onClick={()=>{refetch({
+            filter:{category:{name:[]}}
+        })}}/>
                                     <label>{cat.name}</label><br />
                                 </>
                             ))
@@ -84,8 +85,6 @@ const AllProduct = () =>{
                             open={open}
                             onClose={handleClose}
                             onOpen={handleOpen}
-                            value={order}
-                            onChange={handleChange}
                             >
                             <MenuItem value="p">
                                 <em>Pertinence</em>
@@ -111,7 +110,7 @@ const AllProduct = () =>{
                     </div>
                 </div>
             </div>
-        </section>
+        </section>   
         </>
     )
 }

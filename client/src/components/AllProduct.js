@@ -28,9 +28,10 @@ const products = gql`
 
 const AllProduct = () =>{
     const {loading,error,data,refetch,networkStatus} = useQuery(products,{
-        variables:{sort:"id:desc",filter:{category:{name:"tent"}}},
-        notifyOnNetworkStatusChange: true,
-    })
+        variables:{sort:"id:desc",filter:{}},
+        fetchPolicy: "network-only",
+        
+    },);
     const [open, setOpen] = useState(false);
     const [filter,setfilter] = useState([]);
     const handleClose = () => {
@@ -52,7 +53,7 @@ const AllProduct = () =>{
             console.log(filter)
             
         }
-        
+        refetch({sort:"id:desc",filter:{category:{name:filter}}})
     }
     if (error) return `Error! ${error}`;
     return(
@@ -66,9 +67,7 @@ const AllProduct = () =>{
                         {data &&
                             data.categories.map(cat=>(
                                 <>
-                                    <Checkbox value={cat.name} id={cat.name} onClick={()=>{refetch({
-            filter:{category:{name:[]}}
-        })}}/>
+                                    <Checkbox value={cat.name} id={cat.name} onClick={onFilter} />
                                     <label>{cat.name}</label><br />
                                 </>
                             ))

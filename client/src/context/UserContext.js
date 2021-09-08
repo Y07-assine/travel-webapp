@@ -1,30 +1,18 @@
 import React,{createContext,useState} from 'react';
-import { useQuery,gql} from '@apollo/client';
+
 
 
 
 const UserContext = createContext({});
 
-const Costumer = gql`
-    query getUser($email:String!,$pwd:String!){
-        costumers(where:{email:$email,password:$pwd}){
-            username
-          }
-    }
-`
 
 const UserContextProvider = (props)=>{
     const [user,setUser] = useState(null);
 
-    const Signin = (email,pwd,history) =>{
+    const signin = (profile,history) =>{
         try{
-            const {data} = useQuery(Costumer,{
-                variables:{email:email,password:pwd},
-            },);
-                localStorage.setItem('profile',JSON.stringify(data.costumer));
-                setUser(data.costumer);
-
-            
+            localStorage.setItem('profile',JSON.stringify(profile));
+            setUser(profile);
             history.push('/');
         }catch(error){
             console.log(error);

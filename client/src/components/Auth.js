@@ -3,7 +3,15 @@ import {Avatar,Button,Paper,Grid,Typography,Container,TextField,Input} from '@ma
 import LockOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
 import { useAuth } from '../context/UserContext';
 import { useHistory } from 'react-router';
+import { useQuery,gql} from '@apollo/client';
 
+const Costumer = gql`
+    query getUser($email:String!,$pwd:String!){
+        costumers(where:{email:$email,password:$pwd}){
+            username
+          }
+    }
+`
 const Auth =()=>{
     const {signin,signout} = useAuth();
     const [isSignup,setIsSignup] = useState(false);
@@ -19,7 +27,7 @@ const Auth =()=>{
         if(isSignup){
             console.log('test');
         }else{
-            signin(formData.email,formData.password,history);
+            
         }
     }
     const switchMode = ()=>{

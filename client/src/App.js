@@ -7,6 +7,7 @@ import Header from './components/Header';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import AllProduct from './components/AllProduct';
 import ProductDetails from './components/ProductDetails';
+import Auth from './components/Auth';
 
 const client = new ApolloClient({
     uri:graphqlURL,
@@ -23,6 +24,7 @@ const App =() =>{
                     <Route exact path="/" component={Home} />
                     <Route path="/products" component={AllProduct} />
                     <Route path="/product/:id" component={ProductDetails} />
+                    <Route path="/authentification" component={Auth} />
                 </Switch>
         </Router>
         </ApolloProvider>

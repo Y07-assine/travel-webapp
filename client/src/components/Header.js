@@ -1,12 +1,51 @@
 import React,{useState} from 'react';
 import Icon from './Icon';
 import {Link} from 'react-router-dom';
+import { Button,Menu,MenuItem } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 const Header = ()=>{
     const [click,setClick]= useState(false);
+    const [user, setuser] = useState(null);
      const handleClick = ()=>{
          setClick(!click);
      }
+     const StyledMenu = withStyles({
+        paper: {
+          border: '1px solid #d3d4d5',
+        },
+      })((props) => (
+        <Menu
+          elevation={0}
+          getContentAnchorEl={null}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+          {...props}
+        />
+      ));
+      
+      const StyledMenuItem = withStyles((theme) => ({
+        root: {
+          '&:focus': {
+            backgroundColor: theme.palette.primary.main,
+            '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+              color: theme.palette.common.white,
+            },
+          },
+        },
+      }))(MenuItem);  
+      const handleOpen = (event) => {
+        setuser(event.currentTarget);
+    };
+    const handleClose = () => {
+        setuser(null);
+    }; 
     return(
         <header className="header">
             <div className="video">
@@ -14,7 +53,7 @@ const Header = ()=>{
                     <source src="/images/video3.mp4" type="video/mp4" />
                 </video>
             </div>
-            <div className="container nav">
+            <div className="nav">
                 <div className="navContainer margin">
                     <div>
                         <Link to="/"><img src="/images/logo6.png" alt="Safar" className="logo" /></Link>
@@ -29,6 +68,17 @@ const Header = ()=>{
                     </div>
                     <div className="nav-icon">
                         <Icon name='search' size={25} color={'white'} />
+                        <Button onClick={handleOpen}><Icon name='user' size={25} color={'white'} /></Button>
+                        <StyledMenu
+                                id="customized-menu"
+                                anchorEl={user}
+                                keepMounted
+                                open={Boolean(user)}
+                                onClose={handleClose}
+                                >
+                                <StyledMenuItem><Link to={`/authentification`}>Se connecter</Link></StyledMenuItem>
+                                <StyledMenuItem><Link to={`/authentification`}>S'inscrire</Link></StyledMenuItem> 
+                            </StyledMenu>
                         <div className="nav__hamburger " onClick={handleClick} >
                             <Icon name={click ? 'cross' :'menu'} size={click ? 25 :35} color={'white'}/>
                         </div>

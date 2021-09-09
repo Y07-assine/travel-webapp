@@ -3,13 +3,17 @@ import Icon from './Icon';
 import {Link} from 'react-router-dom';
 import { Button,Menu,MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { useAuth } from '../context/UserContext';
 
 const Header = ()=>{
     const [click,setClick]= useState(false);
-    const [user, setuser] = useState(null);
+    const {signin,signout} = useAuth();
+    const [anchorEl, setanchorEl] = useState(null);
      const handleClick = ()=>{
          setClick(!click);
      }
+     const user = window.localStorage.getItem('profile');
+     console.log(user)
      const StyledMenu = withStyles({
         paper: {
           border: '1px solid #d3d4d5',
@@ -41,10 +45,10 @@ const Header = ()=>{
         },
       }))(MenuItem);  
       const handleOpen = (event) => {
-        setuser(event.currentTarget);
+        setanchorEl(event.currentTarget);
     };
     const handleClose = () => {
-        setuser(null);
+        setanchorEl(null);
     }; 
     return(
         <header className="header">
@@ -71,13 +75,23 @@ const Header = ()=>{
                         <Button onClick={handleOpen}><Icon name='user' size={25} color={'white'} /></Button>
                         <StyledMenu
                                 id="customized-menu"
-                                anchorEl={user}
+                                anchorEl={anchorEl}
                                 keepMounted
-                                open={Boolean(user)}
+                                open={Boolean(anchorEl)}
                                 onClose={handleClose}
                                 >
-                                <StyledMenuItem><Link to={`/authentification`}>Se connecter</Link></StyledMenuItem>
-                                <StyledMenuItem><Link to={`/authentification`}>S'inscrire</Link></StyledMenuItem> 
+                                  {user ? 
+                                  <>
+                                  <StyledMenuItem>user</StyledMenuItem>
+                                  <StyledMenuItem onClick={()=>signout()}>LOGOUT</StyledMenuItem>
+                                  </>
+                                  :
+                                  <>
+                                  <StyledMenuItem><Link to={`/login`}>Sign In</Link></StyledMenuItem>
+                                  <StyledMenuItem><Link to={`/register`}>Sign Up</Link></StyledMenuItem>
+                                  </>
+                                }
+                                
                             </StyledMenu>
                         <div className="nav__hamburger " onClick={handleClick} >
                             <Icon name={click ? 'cross' :'menu'} size={click ? 25 :35} color={'white'}/>

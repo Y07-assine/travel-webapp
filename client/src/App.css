@@ -679,7 +679,7 @@ box-shadow: 0 -0.2rem 2rem rgb(0 0 0 / 10%);
 .form input[type=submit]:hover {
   background-color: #222a9c;
 }
-.form div{
+.form div > .MuiAlert-standardError{
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -687,6 +687,15 @@ box-shadow: 0 -0.2rem 2rem rgb(0 0 0 / 10%);
 .form{
   margin: 2rem;
 
+}
+.MuiAlert-standardError .MuiAlert-icon {
+  color: white;
+}
+
+.MuiAlert-standardError {
+    color: #fff !important;
+    font-weight: 500;
+    background-color: #f44336 !important;
 }
 .auth-form{
   margin-top: 3rem;

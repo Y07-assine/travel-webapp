@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import {Avatar,Button,Paper,Grid,Typography,Container,TextField,Input} from '@material-ui/core';
+import {Avatar,Button,Paper,Typography,Container,TextField,Input} from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 import LockOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
 import { useAuth } from '../context/UserContext';
 import { useHistory } from 'react-router';
@@ -30,7 +31,7 @@ const Auth =()=>{
                 variables:{identifier:formData.email,pwd:formData.password},   
             })
             .then(({data})=>{
-                signin(data,history);
+                signin([data.login.jwt,data.login.user.username],history);
             })
             .catch(error =>{
                 console.log(error);
@@ -47,7 +48,7 @@ const Auth =()=>{
                 <Typography variant="h5">Sign In</Typography>
                 <div className="form">
                 <form onSubmit={handleSubmit} className="auth">
-                {error && <h3>Identifier or password invalid</h3>}
+                {error && <Alert severity="error">Identifier or password invalid!</Alert>}
                     <label>Email Address</label><br/>
                     <input name="email" type="email" onChange={handleChange} /><br/>
                     <label>Password</label><br/>

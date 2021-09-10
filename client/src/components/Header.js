@@ -12,8 +12,7 @@ const Header = ()=>{
      const handleClick = ()=>{
          setClick(!click);
      }
-     const user = window.localStorage.getItem('profile');
-     console.log(user)
+     const user = JSON.parse(window.localStorage.getItem('profile'));
      const StyledMenu = withStyles({
         paper: {
           border: '1px solid #d3d4d5',
@@ -82,7 +81,7 @@ const Header = ()=>{
                                 >
                                   {user ? 
                                   <>
-                                  <StyledMenuItem>user</StyledMenuItem>
+                                  <StyledMenuItem>{user[1]}</StyledMenuItem>
                                   <StyledMenuItem onClick={()=>signout()}>LOGOUT</StyledMenuItem>
                                   </>
                                   :

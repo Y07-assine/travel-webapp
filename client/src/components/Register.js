@@ -32,12 +32,12 @@ const Register =()=>{
             .then(({data})=>{
                 signin(data,history);
             })
-            .catch(error =>{
-                console.log(error);
+            .catch(err =>{
+                console.log(err);
             })
         }
     }
-
+    error && console.log(error)
     return(
 
         <section className="auth-form">
@@ -49,7 +49,10 @@ const Register =()=>{
             <Typography variant="h5">Sign Up</Typography>
             <div className="form">
             <form onSubmit={handleSubmit} className="auth">
-            {error && <h3>Identifier or password invalid</h3>}
+            {error && <pre>Bad: {error.graphQLErrors.map(({ message }, i) => (
+        <span key={i}>{message}</span>
+      ))}
+      </pre>}
             <label>First Name</label><br/>
                     <input name="firstname"  onChange={handleChange} /><br />
                     <label>Last Name</label><br/>

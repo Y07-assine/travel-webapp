@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_items",
+  "info": {
+    "name": "order_item",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "product": {
+      "model": "product",
+      "via": "order_items"
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "order_items"
+    },
+    "total_price": {
+      "type": "decimal"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

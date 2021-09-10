@@ -54,6 +54,10 @@
     "brand": {
       "model": "brand",
       "via": "products"
+    },
+    "order_items": {
+      "via": "product",
+      "collection": "order-item"
     }
   }
 }

@@ -21,7 +21,7 @@ const UserContextProvider = (props)=>{
 
 
     const signout = ()=>{
-        localStorage.clear();
+        localStorage.removeItem('profile');
         setUser(null);
     }
     const isAuthenticated=()=>{

@@ -70,7 +70,7 @@ const Header = ()=>{
                         </div>
                     </div>
                     <div className="nav-icon">
-                        <Icon name='search' size={25} color={'white'} />
+                        <Icon name='shopping-basket' size={25} color={'white'} />
                         <Button onClick={handleOpen}><Icon name='user' size={25} color={'white'} /></Button>
                         <StyledMenu
                                 id="customized-menu"

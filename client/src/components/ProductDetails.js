@@ -3,6 +3,7 @@ import { useQuery,gql } from '@apollo/client';
 import { useParams } from 'react-router';
 import {CircularProgress} from '@material-ui/core';
 import Icon from './Icon';
+import { useCart } from '../context/CartContext';
 
 const product = gql`
 query product($id:ID!){
@@ -20,6 +21,7 @@ query product($id:ID!){
   }
 `
 const ProductDetails = ()=>{
+    const {addToCart} = useCart();
     const {id} = useParams();
     const {loading,error,data} = useQuery(product,{
         variables:{id:id}
@@ -91,7 +93,7 @@ const ProductDetails = ()=>{
                                     </div>
                                 </div>
                                 <div className="col ">
-                                    <input className="color-primary-bg font-size-14  btn-addTocart text-white" type="button" value="Add to Cart"  />
+                                    <input className="color-primary-bg font-size-14  btn-addTocart text-white" type="button" value="Add to Cart" onClick={()=>{addToCart(data.product.id,quantity)}}  />
                                 </div>
                             </div>
                         </div>

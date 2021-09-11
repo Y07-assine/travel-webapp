@@ -9,6 +9,7 @@ import AllProduct from './components/AllProduct';
 import ProductDetails from './components/ProductDetails';
 import Auth from './components/Auth';
 import { UserContextProvider } from './context/UserContext';
+import { CartContextProvider } from './context/CartContext';
 import Register from './components/Register';
 const client = new ApolloClient({
     uri:graphqlURL,
@@ -20,7 +21,9 @@ const App =() =>{
         <>
         <ApolloProvider client={client}>
         <Router>
+        <CartContextProvider>
         <UserContextProvider>
+            
             <Header />
                 <Switch>
                     
@@ -31,7 +34,9 @@ const App =() =>{
                         <Route path="/register" component={Register} />
                     
                 </Switch>
+            
         </UserContextProvider>
+        </CartContextProvider>
         </Router>
         </ApolloProvider>
         </>

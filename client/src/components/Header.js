@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom';
 import { Button,Menu,MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { useAuth } from '../context/UserContext';
+import { useCart } from '../context/CartContext';
 
 const Header = ()=>{
     const [click,setClick]= useState(false);
     const {signin,signout} = useAuth();
+    const {getTotal}= useCart();
     const [anchorEl, setanchorEl] = useState(null);
      const handleClick = ()=>{
          setClick(!click);
@@ -70,7 +72,11 @@ const Header = ()=>{
                         </div>
                     </div>
                     <div className="nav-icon">
-                        <Icon name='shopping-basket' size={25} color={'white'} />
+                      <div>
+                          <Icon name='shopping-basket' size={25} color={'white'} />
+                          <span className="cart__total">{getTotal()}</span>
+                        </div>
+                        
                         <Button onClick={handleOpen}><Icon name='user' size={25} color={'white'} /></Button>
                         <StyledMenu
                                 id="customized-menu"

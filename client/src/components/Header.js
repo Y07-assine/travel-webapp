@@ -9,7 +9,7 @@ import { useCart } from '../context/CartContext';
 const Header = ()=>{
     const [click,setClick]= useState(false);
     const {signin,signout} = useAuth();
-    const {getTotal}= useCart();
+    const {cartTotal}= useCart();
     const [anchorEl, setanchorEl] = useState(null);
      const handleClick = ()=>{
          setClick(!click);
@@ -74,7 +74,7 @@ const Header = ()=>{
                     <div className="nav-icon">
                       <div>
                           <Icon name='shopping-basket' size={25} color={'white'} />
-                          <span className="cart__total">{getTotal()}</span>
+                          <span className="cart__total">{cartTotal}</span>
                         </div>
                         
                         <Button onClick={handleOpen}><Icon name='user' size={25} color={'white'} /></Button>

@@ -8,7 +8,8 @@ const products = gql`
             id,
             price,
             discount_price,
-            image{url}
+            image{url},
+            brand{name}
         }
     }
 `
@@ -17,8 +18,12 @@ const products = gql`
 const CartContext = createContext({});
 
 const CartContextProvider = (props)=>{
-    const [cart,setCart] = useState([]);
+    const store = localStorage.getItem('cart');
+    const [cart,setCart] = useState(JSON.parse(store) || []);
+    const [cartTotal, setcartTotal] = useState(localStorage.getItem('cartTotal') || 0);
     const {data} = useQuery(products);
+    
+    console.log(JSON.parse(store))
 
     const addToCart = (id,quantity)=>{
         const prod = data.products.findIndex(item=>item.id ===id)
@@ -32,12 +37,15 @@ const CartContextProvider = (props)=>{
             cart.push(product);
             setCart(cart);
         }
+        getTotal();
         localStorage.setItem('cart',JSON.stringify(cart));
+        
     };
     const getTotal = () =>{
         let total = 0;
         cart.map(item=>(total+=item.qty))
-        return total;
+        setcartTotal(total);
+        localStorage.setItem('cartTotal',total);
     }
     const getTotalPrice = ()=>{
         let total = 0;
@@ -47,7 +55,9 @@ const CartContextProvider = (props)=>{
     const CartContextValue = {
         addToCart,
         getTotal,
-        getTotalPrice
+        getTotalPrice,
+        cartTotal,
+        cart,
     }
 
     return(

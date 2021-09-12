@@ -62,6 +62,14 @@
     "order_items": {
       "via": "users_permissions_user",
       "collection": "order-item"
+    },
+    "delivery_informations": {
+      "via": "users_permissions_user",
+      "collection": "delivery-information"
+    },
+    "orders": {
+      "via": "users_permissions_user",
+      "collection": "order"
     }
   }
 }

@@ -21,6 +21,7 @@ const CartContextProvider = (props)=>{
     const store = localStorage.getItem('cart');
     const [cart,setCart] = useState(JSON.parse(store) || []);
     const [cartTotal, setcartTotal] = useState(localStorage.getItem('cartTotal') || 0);
+    const [cartTotalPrice, setcartTotalPrice] = useState(localStorage.getItem('cartTotalPrice') || 0);
     const {data} = useQuery(products);
     
     console.log(JSON.parse(store))
@@ -38,6 +39,7 @@ const CartContextProvider = (props)=>{
             setCart(cart);
         }
         getTotal();
+        getTotalPrice();
         localStorage.setItem('cart',JSON.stringify(cart));
         
     };
@@ -47,6 +49,7 @@ const CartContextProvider = (props)=>{
             cart[id].totalPrice += (cart[id].product.discount_price ? cart[id].product.discount_price : cart[id].product.discount_price)
         }  
         getTotal();
+        getTotalPrice();
         localStorage.setItem('cart',JSON.stringify(cart));  
     }
     const decrement = (id)=>{
@@ -58,6 +61,14 @@ const CartContextProvider = (props)=>{
             setCart(cart);
         }
         getTotal();
+        getTotalPrice();
+        localStorage.setItem('cart',JSON.stringify(cart));
+    }
+    const removeOrder = (id)=>{
+        cart.splice(id,1);
+        setCart(cart);
+        getTotal();
+        getTotalPrice();
         localStorage.setItem('cart',JSON.stringify(cart));
     }
     const getTotal = () =>{
@@ -69,7 +80,8 @@ const CartContextProvider = (props)=>{
     const getTotalPrice = ()=>{
         let total = 0;
         cart.map(item=>(total+=item.totalPrice))
-        return total;
+        setcartTotalPrice(total);
+        localStorage.setItem('cartTotalPrice',total);
     }
     const CartContextValue = {
         addToCart,
@@ -79,6 +91,8 @@ const CartContextProvider = (props)=>{
         cart,
         increment,
         decrement,
+        removeOrder,
+        cartTotalPrice
     }
 
     return(

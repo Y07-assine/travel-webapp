@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delivery_informations",
+  "info": {
+    "name": "delivery_information"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "integer",
+      "max": 10,
+      "required": true
+    },
+    "code_postal": {
+      "type": "integer",
+      "required": true
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "delivery_informations"
+    }
+  }
+}

@@ -29,6 +29,10 @@
     },
     "title": {
       "type": "string"
+    },
+    "order": {
+      "via": "order_items",
+      "model": "order"
     }
   }
 }

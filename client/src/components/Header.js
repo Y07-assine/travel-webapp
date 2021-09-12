@@ -73,7 +73,7 @@ const Header = ()=>{
                     </div>
                     <div className="nav-icon">
                       <div>
-                          <Icon name='shopping-basket' size={25} color={'white'} />
+                          <Link to="/cart"><Icon name='shopping-basket' size={25} color={'white'} /></Link>
                           <span className="cart__total">{cartTotal}</span>
                         </div>
                         

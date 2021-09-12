@@ -41,6 +41,25 @@ const CartContextProvider = (props)=>{
         localStorage.setItem('cart',JSON.stringify(cart));
         
     };
+    const increment = (id)=>{
+        if(cart[id].qty<9){
+            cart[id].qty++;
+            cart[id].totalPrice += (cart[id].product.discount_price ? cart[id].product.discount_price : cart[id].product.discount_price)
+        }  
+        getTotal();
+        localStorage.setItem('cart',JSON.stringify(cart));  
+    }
+    const decrement = (id)=>{
+        if(cart[id].qty>1){
+            cart[id].qty--;
+            cart[id].totalPrice -= (cart[id].product.discount_price ? cart[id].product.discount_price : cart[id].product.discount_price)
+        }else{
+            cart.splice(id,1);
+            setCart(cart);
+        }
+        getTotal();
+        localStorage.setItem('cart',JSON.stringify(cart));
+    }
     const getTotal = () =>{
         let total = 0;
         cart.map(item=>(total+=item.qty))
@@ -58,6 +77,8 @@ const CartContextProvider = (props)=>{
         getTotalPrice,
         cartTotal,
         cart,
+        increment,
+        decrement,
     }
 
     return(

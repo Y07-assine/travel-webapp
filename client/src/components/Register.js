@@ -9,7 +9,7 @@ const Costumer = gql`
     mutation AddUser($username:String!,$email:String!,$pwd:String!){
         register(input: { username: $username, email: $email, password: $pwd }) {
             jwt,
-            user{username}
+            user{username,email,id}
           }
     }
 `

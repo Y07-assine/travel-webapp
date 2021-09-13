@@ -12,6 +12,7 @@ import { UserContextProvider } from './context/UserContext';
 import { CartContextProvider } from './context/CartContext';
 import Register from './components/Register';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 const client = new ApolloClient({
     uri:graphqlURL,
     cache:new InMemoryCache()
@@ -34,6 +35,7 @@ const App =() =>{
                         <Route path="/login" component={Auth} />
                         <Route path="/register" component={Register} />
                         <Route path="/cart" component={Cart} />
+                        <Route path="/checkout" component={Checkout} />
                     
                 </Switch>
             

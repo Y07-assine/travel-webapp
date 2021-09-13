@@ -10,7 +10,7 @@ const Costumer = gql`
     mutation getUser($identifier:String!,$pwd:String!){
         login(input:{identifier:$identifier,password:$pwd}){
             jwt,
-            user{username}
+            user{username,email,id}
           }
     }
 `
@@ -31,7 +31,7 @@ const Auth =()=>{
                 variables:{identifier:formData.email,pwd:formData.password},   
             })
             .then(({data})=>{
-                signin([data.login.jwt,data.login.user.username],history);
+                signin([data.login.jwt,data.login.user],history);
             })
             .catch(error =>{
                 console.log(error);

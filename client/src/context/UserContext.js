@@ -13,7 +13,7 @@ const UserContextProvider = (props)=>{
         try{
             localStorage.setItem('profile',JSON.stringify(profile));
             setUser(profile);
-            history.push('/');
+            history.go(-1);
         }catch(error){
             console.log(error);
         }

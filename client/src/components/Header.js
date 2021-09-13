@@ -87,7 +87,7 @@ const Header = ()=>{
                                 >
                                   {user ? 
                                   <>
-                                  <StyledMenuItem>{user[1]}</StyledMenuItem>
+                                  <StyledMenuItem>{user[1].username}</StyledMenuItem>
                                   <StyledMenuItem onClick={()=>signout()}>LOGOUT</StyledMenuItem>
                                   </>
                                   :

@@ -23,8 +23,6 @@ const CartContextProvider = (props)=>{
     const [cartTotal, setcartTotal] = useState(localStorage.getItem('cartTotal') || 0);
     const [cartTotalPrice, setcartTotalPrice] = useState(localStorage.getItem('cartTotalPrice') || 0);
     const {data} = useQuery(products);
-    
-    console.log(JSON.parse(store))
 
     const addToCart = (id,quantity)=>{
         const prod = data.products.findIndex(item=>item.id ===id)

@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "delivery_informations",
   "info": {
-    "name": "delivery_information"
+    "name": "delivery_information",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,19 +15,16 @@
     "address": {
       "type": "text"
     },
-    "phone": {
-      "type": "integer",
-      "max": 10,
-      "required": true
-    },
-    "code_postal": {
-      "type": "integer",
-      "required": true
-    },
     "users_permissions_user": {
       "plugin": "users-permissions",
       "model": "user",
       "via": "delivery_informations"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "code_postal": {
+      "type": "string"
     }
   }
 }

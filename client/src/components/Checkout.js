@@ -39,28 +39,32 @@ const Checkout = () =>{
         createDeliveryInformation({
             variables:{address:formData.address,phone:formData.phone,postal:formData.postal,user:user[1].id}
         })
-        .then(({data})=>async()=>{
+        .then(({data})=>{
             const deliveryID = data.createDeliveryInformation.deliveryInformation.id
             console.log(deliveryID)
             let orderItemID = [];
-            await cart.map(order=>{
+            Promise.all(cart.map(order=>{
                 createOrderItem({
                     variables:{product:order.product.id,quantity:order.qty,price:order.totalPrice,user:user[1].id,title:`${order.qty} of ${order.product.name} for ${user[1].username}`}
                 })
                 .then(({data})=>{
-                    orderItemID.push(data.createOrderItem.orderItem)
+                    orderItemID.push(data.createOrderItem.orderItem.id)
                 })
                 .catch(error=>console.log(error));
-            })
-            createOrder({
-                variables:{user:user[1].id,items:orderItemID,delivery:deliveryID}
-            })
+            }))
             .then(()=>{
-                localStorage.removeItem('cart')
-                localStorage.removeItem('cartTotal')
-                localStorage.removeItem('cartTotalPrice')
-                alert("order with success !")})
-            .catch(error=>console.log(error));
+                console.log(orderItemID);
+                createOrder({
+                    variables:{user:user[1].id,items:orderItemID,delivery:deliveryID}
+                })
+                .then(()=>{
+                    localStorage.removeItem('cart')
+                    localStorage.removeItem('cartTotal')
+                    localStorage.removeItem('cartTotalPrice')
+                    alert("order with success !")})
+                .catch(error=>console.log(error));
+            })
+            
             
             
         })

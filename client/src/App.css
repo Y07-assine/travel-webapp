@@ -451,6 +451,12 @@ ul {
 .productDetails .price{
   font-size: 24px;
 }
+.productDetails .product-discount{
+  display: block;
+}
+.productDetails .actuel-price strong{
+  display: block;
+}
 .brand{
   text-transform: uppercase;
   font-size: 18px;
@@ -467,7 +473,7 @@ ul {
 }
 #color{
   width: 60%;
-  height: 35px;
+  font-size: 16px;
   background-color:rgb(240, 240, 240);
   box-shadow: 0 5px 5px 0 #ccc;
   border: none;
@@ -630,6 +636,10 @@ box-shadow: 0 -0.2rem 2rem rgb(0 0 0 / 10%);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
+}
+.productDetails .rating{
+  display: block;
+  margin-top: .5rem;
 }
 
 .rating {

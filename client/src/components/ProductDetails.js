@@ -74,7 +74,7 @@ const ProductDetails = ()=>{
                             <div className="price">
                                 {data.product.discount_price ? (
                                     <>  
-                                        <div><strong>{data.product.discount_price} Dhs</strong></div>
+                                        <div className="actuel-price"><strong>{data.product.discount_price} Dhs</strong></div><br/>
                                         <div className="product-discount">{data.product.price} Dhs</div>
                                     </>
                                 ):

@@ -51,6 +51,7 @@ const Header = ()=>{
     const handleClose = () => {
         setanchorEl(null);
     }; 
+    console.log(window.location.pathname.split('/'))
     return(
         <header className="header">
             <div className="nav">

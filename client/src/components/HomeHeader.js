@@ -1,12 +1,12 @@
 import React,{useState} from 'react';
 import Icon from './Icon';
 import {Link} from 'react-router-dom';
-import { Menu,MenuItem } from '@material-ui/core';
+import { Button,Menu,MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { useAuth } from '../context/UserContext';
 import { useCart } from '../context/CartContext';
 
-const Header = ()=>{
+const HomeHeader = ()=>{
     const [click,setClick]= useState(false);
     const {signin,signout} = useAuth();
     const {cartTotal}= useCart();
@@ -52,33 +52,32 @@ const Header = ()=>{
         setanchorEl(null);
     }; 
     return(
-        <header className="header">
+        <header className="homeheader">
+              <div className="video">
+                <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop" >
+                    <source src="/images/video3.mp4" type="video/mp4" />
+                </video>
+              </div>
             <div className="nav">
                 <div className="navContainer margin">
-                    <div className="nav__hamburger " onClick={handleClick} >
-                        <Icon name={click ? 'cross' :'menu'} size={click ? 25 :35} color={'#005870'}/>
-                        </div>
                     <div>
-                        <Link to="/"><img src="/images/logo7.png" alt="Safar" className="logo" /></Link>
+                        <Link to="/"><img src="/images/logo6.png" alt="Safar" className="logo" /></Link>
                     </div>
-                    <div className={click ? 'nav-menu open' :'nav-menu '}>
-                        <div className="menu ">
-                            <a href="/" className="item text-black">Plan your trip</a>
-                            <a href="/" className="item text-black">Things to do</a>
-                            <a href="/" className="item text-black">Products</a>
-                            <a href="/" className="item text-black">Blogs</a>
+                    <div className={click ? 'nav-menu open' :'nav-menu'}>
+                        <div className="menu">
+                            <a href="/" className="item">Plan your trip</a>
+                            <a href="/" className="item">Things to do</a>
+                            <a href="/" className="item">Products</a>
+                            <a href="/" className="item">Blogs</a>
                         </div>
                     </div>
                     <div className="nav-icon">
-                      <div className="icon__item">
-                          <Link to="/cart" ><Icon name='shopping-basket' size={25} color={'#005870'} /></Link>
+                      <div>
+                          <Link to="/cart"><Icon name='shopping-basket' size={25} color={'white'} /></Link>
                           <span className="cart__total">{cartTotal}</span>
                         </div>
-                        <div className="icon__item">
-                            <button onClick={handleOpen} >
-                                <Icon name='user' size={25} color={'#005870'} />
-                            </button>
-                        </div>
+                        
+                        <Button onClick={handleOpen}><Icon name='user' size={25} color={'white'} /></Button>
                         <StyledMenu
                                 id="customized-menu"
                                 anchorEl={anchorEl}
@@ -88,23 +87,35 @@ const Header = ()=>{
                                 >
                                   {user ? 
                                   <>
-                                  <StyledMenuItem>{user[1].username}</StyledMenuItem>
-                                  <StyledMenuItem onClick={()=>signout()}>LOGOUT</StyledMenuItem>
+                                  <StyledMenuItem onClose={handleClose}>{user[1].username}</StyledMenuItem>
+                                  <StyledMenuItem onClose={handleClose} onClick={()=>signout()} >LOGOUT</StyledMenuItem>
                                   </>
                                   :
                                   <>
-                                  <StyledMenuItem><Link to={`/login`}>Sign In</Link></StyledMenuItem>
-                                  <StyledMenuItem><Link to={`/register`}>Sign Up</Link></StyledMenuItem>
+                                  <StyledMenuItem onClose={handleClose}><Link to={`/login`}>Sign In</Link></StyledMenuItem>
+                                  <StyledMenuItem onClose={handleClose}><Link to={`/register`}>Sign Up</Link></StyledMenuItem>
                                   </>
                                 }
                                 
                             </StyledMenu>
+                        <div className="nav__hamburger " onClick={handleClick} >
+                            <Icon name={click ? 'cross' :'menu'} size={click ? 25 :35} color={'white'}/>
+                        </div>
                     </div>
                     
+                </div>
+            </div>
+            <div >
+            
+                <div className="content-title">
+                    <h3 className="title">Start your adventure now!</h3><br />
+                </div>
+                <div className="content-button">
+                    <button className="see-more"><Link to={'/products'}>See more</Link></button>
                 </div>
             </div>
         </header>
     )
 }
 
-export default Header;
+export default HomeHeader;

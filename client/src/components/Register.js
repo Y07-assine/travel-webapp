@@ -1,9 +1,10 @@
 import React,{useState} from 'react';
-import {Avatar,Button,Paper,Grid,Typography,Container,TextField,Input} from '@material-ui/core';
+import {Avatar,Button,Paper,Typography,Container} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
 import { useAuth } from '../context/UserContext';
 import { useHistory } from 'react-router';
 import { useMutation,gql} from '@apollo/client';
+import {Link} from 'react-router-dom';
 
 const Costumer = gql`
     mutation AddUser($username:String!,$email:String!,$pwd:String!){
@@ -14,7 +15,7 @@ const Costumer = gql`
     }
 `
 const Register =()=>{
-    const {signin,signout} = useAuth();
+    const {signin} = useAuth();
     const [showPassword,setShowPassword] = useState(false);
     const [register,{data,error}] = useMutation(Costumer);
     const [formData,setformData] = useState({firstname:'',lastname:'',email:'',password:'',confirmedPassword:''});
@@ -22,7 +23,6 @@ const Register =()=>{
     const handleChange = (e)=>{
         setformData({...formData,[e.target.name]: e.target.value})
     }
-    const handleShowPassword = ()=>setShowPassword(!showPassword);
     const handleSubmit = (e)=>{
         e.preventDefault();
         if(formData.password===formData.confirmedPassword){
@@ -64,7 +64,7 @@ const Register =()=>{
                 <label>Confimed Password</label><br/><input name="confirmedPassword"  onChange={handleChange} type="password" />
                 <Button type="submit"  variant="contained" color="primary">Sign Up</Button>
             </form>
-            <p>Already have an account?<span >SIGN IN</span></p>
+            <p>Already have an account?<span ><Link to="/login">SIGN IN</Link></span></p>
             
             </div>
         </Paper>

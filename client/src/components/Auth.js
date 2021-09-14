@@ -1,10 +1,11 @@
 import React,{useState} from 'react';
-import {Avatar,Button,Paper,Typography,Container,TextField,Input} from '@material-ui/core';
+import {Avatar,Button,Paper,Typography,Container} from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import LockOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
 import { useAuth } from '../context/UserContext';
 import { useHistory } from 'react-router';
 import { useMutation,gql} from '@apollo/client';
+import {Link} from 'react-router-dom';
 
 const Costumer = gql`
     mutation getUser($identifier:String!,$pwd:String!){
@@ -15,7 +16,7 @@ const Costumer = gql`
     }
 `
 const Auth =()=>{
-    const {signin,signout} = useAuth();
+    const {signin} = useAuth();
     const [showPassword,setShowPassword] = useState(false);
     const [login,{data,error}] = useMutation(Costumer);
     const [formData,setformData] = useState({email:'',password:''});
@@ -23,7 +24,6 @@ const Auth =()=>{
     const handleChange = (e)=>{
         setformData({...formData,[e.target.name]: e.target.value})
     }
-    const handleShowPassword = ()=>setShowPassword(!showPassword);
     const handleSubmit = (e)=>{
         e.preventDefault();
  
@@ -55,7 +55,7 @@ const Auth =()=>{
                     <input name="password" onChange={handleChange} type={showPassword ? "test":"password"}  /><br/>
                     <Button type="submit"  variant="contained" color="primary">Sign In</Button>
                 </form>
-                 <p>Don't have an account ?<span>SIGN UP</span></p>
+                 <p>Don't have an account ?<span><Link to="/register">SIGN UP</Link></span></p>
                 
                 </div>
             </Paper>

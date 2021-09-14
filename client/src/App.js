@@ -25,20 +25,20 @@ const App =() =>{
         <Router>
         <CartContextProvider>
         <UserContextProvider>
-            
-            <Header />
                 <Switch>
-                    
                         <Route exact path="/" component={Home} />
-                        <Route path="/products" component={AllProduct} />
-                        <Route path="/product/:id" component={ProductDetails} />
-                        <Route path="/login" component={Auth} />
-                        <Route path="/register" component={Register} />
-                        <Route path="/cart" component={Cart} />
-                        <Route path="/checkout" component={Checkout} />
-                    
-                </Switch>
-            
+                        <Route>
+                            <Header />
+                            <Switch>
+                                <Route path="/products" component={AllProduct} />
+                                <Route path="/product/:id" component={ProductDetails} />
+                                <Route path="/login" component={Auth} />
+                                <Route path="/register" component={Register} />
+                                <Route path="/cart" component={Cart} />
+                                <Route path="/checkout" component={Checkout} />   
+                            </Switch> 
+                        </Route>
+                </Switch>         
         </UserContextProvider>
         </CartContextProvider>
         </Router>

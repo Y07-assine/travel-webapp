@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import Icon from './Icon';
+import {Link} from 'react-router-dom';
 
 const Cart = () =>{
     const {cart,increment,decrement,removeOrder,cartTotal,cartTotalPrice} = useCart();
@@ -10,8 +11,8 @@ const Cart = () =>{
             <div className="cart">
                 <h5 className="font-baloo cart-title">Your shopping cart</h5>
                 <div className="btn-cart">
-                    <button className=" font-size-14  btn-back-to-achat font-baloo"><a href="\" className="text-dark">Continue my shopping</a></button>
-                    <button className="color-primary-bg font-size-14  btn-paiement text-white font-baloo"><a href="#"> Proceed to payment</a></button>
+                    <Link to="/products"><button className=" font-size-14  btn-back-to-achat font-baloo">Continue my shopping</button></Link>
+                    <Link to="/checkout"><button className="color-primary-bg font-size-14  btn-paiement text-white font-baloo">Proceed to payment </button></Link>
                 </div>
             </div>
             

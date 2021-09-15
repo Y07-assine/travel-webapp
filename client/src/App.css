@@ -487,6 +487,16 @@ ul {
   margin-bottom: 0rem !important;
   
 }
+footer{
+  background-color: rgb(236, 236, 236);
+  margin-top: 3rem;
+  min-height: 10rem;
+  align-items: center;
+  justify-content: center;
+}
+footer img{
+  width: 450px;
+}
 .description{
   font-size: 18px;
   line-height: 1.5;

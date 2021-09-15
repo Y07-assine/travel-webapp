@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import { useQuery,gql } from '@apollo/client';
 import { useParams } from 'react-router';
-import {CircularProgress} from '@material-ui/core';
+import {CircularProgress,Breadcrumbs,Typography} from '@material-ui/core';
 import Icon from './Icon';
 import { useCart } from '../context/CartContext';
+import Llink from '@material-ui/core/Link';
 
 const product = gql`
 query product($id:ID!){
@@ -38,6 +39,13 @@ const ProductDetails = ()=>{
             <CircularProgress />
         ):
             <section className="productDetails">
+                <Breadcrumbs aria-label="breadcrumb">
+                    <Llink color="inherit" href="/" >
+                        Home
+                    </Llink>
+                    <Llink color="inherit" href="/products" >Products</Llink>
+                    <Typography color="textPrimary">{data.product.name}</Typography>
+                </Breadcrumbs>
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-6">

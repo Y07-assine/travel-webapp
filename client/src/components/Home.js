@@ -2,6 +2,7 @@ import React from 'react';
 import ProductCategory from './ProductCategory';
 import Map from './Map';
 import HomeHeader from './HomeHeader';
+import Destination from './Destination';
 
 const Home =()=>{
     return(
@@ -9,6 +10,7 @@ const Home =()=>{
             <HomeHeader />
             <ProductCategory />
             <Map />
+            <Destination />
         </>
     )
 }

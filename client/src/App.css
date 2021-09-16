@@ -332,7 +332,7 @@ ul {
     width: 180px;
   }
 
-  .category__card{
+  .category__card,.destination__card{
     border-radius: 1rem;
     margin: 0.5rem;
     position: relative;
@@ -469,12 +469,17 @@ ul {
   background-color: rgb(241, 241, 241);
   padding: 1.5rem;
 }
-.category h3,.about h3{
+.category h3,.about h3,.destination h3{
   font-size: 2.5rem;
   font-weight: 500;
   font-family: "Baloo Thambi 2",cursive;
   color: #005870;
   margin-bottom: 2rem;
+}
+.destination .slick-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 #color{
   width: 60%;
@@ -502,7 +507,7 @@ footer img{
   line-height: 1.5;
   font-family: "Raleway",cursive;
 }
-.category__title{
+.category__title,.destination__title{
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -512,14 +517,20 @@ footer img{
   transform: translate(-50%, -50%);
   
 }
+.destination__title{
+  left: 14% !important;
+  font-weight: 900;
+}
 
-.category__title h3{
+.category__title h3,.destination__title h3{
   color: white;
   line-height: 1;
   height: 62px;
   text-transform: uppercase;
 }
-
+.destination__title h3{
+  transform: rotate(-90deg);
+}
 .row{
   display: flex;
   margin: 1rem;

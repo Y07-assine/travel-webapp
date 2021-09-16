@@ -41,13 +41,13 @@ const Checkout = () =>{
         })
         .then(({data})=>{
             const deliveryID = data.createDeliveryInformation.deliveryInformation.id
-            console.log(deliveryID)
             let orderItemID = [];
             Promise.all(cart.map(order=>{
                 createOrderItem({
                     variables:{product:order.product.id,quantity:order.qty,price:order.totalPrice,user:user[1].id,title:`${order.qty} of ${order.product.name} for ${user[1].username}`}
                 })
                 .then(({data})=>{
+                    console.log(data.createOrderItem.orderItem.id)
                     orderItemID.push(data.createOrderItem.orderItem.id)
                 })
                 .catch(error=>console.log(error));

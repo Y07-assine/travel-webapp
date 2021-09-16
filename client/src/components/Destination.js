@@ -1,15 +1,14 @@
 import React from 'react';
-import CategoryCard from './CategoryCard';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
 import { useQuery,gql } from '@apollo/client';
 import {CircularProgress} from '@material-ui/core';
+import CategoryCard from './CategoryCard';
 
-
-const categories = gql`
-    query getCategories{
-        categories{
+const cities = gql`
+    query getCites{
+        cities{
         name,
         id,
         image{url}
@@ -17,8 +16,8 @@ const categories = gql`
     }
 `
 
-const ProductCategory=()=>{
-    const {loading,error,data} = useQuery(categories)
+const Destination = ()=>{
+    const {loading,error,data} = useQuery(cities)
     const settings = {
         dots: true,
         infinite: true,
@@ -53,24 +52,30 @@ const ProductCategory=()=>{
         ]
     }
     return(
-        <>
-        <section className="category" >
+        <section className="destination">
             <div className="container">
-                <h3>What do you need for you trip?</h3>
-            {loading ? 
+                <h3>Moroccan Destination</h3>
+                {loading ? 
                 <CircularProgress />
-            :
-                <Slider {...settings}>
-                    {data.categories.map(cat=>(
-                        <CategoryCard key={cat.id} image={`http://localhost:1337${cat.image.url}`} title={cat.name} />
-                    ))}
-                </Slider>
-            }
+                :
+                    <Slider {...settings}>
+                        {data.cities.map(cat=>(
+                            <>
+                            <div className="destination__card">
+                            <div className="image">
+                                <img src={`http://localhost:1337${cat.image[0].url}`} alt={cat.name} />
+                            </div>
+                            <div className="destination__title">
+                                <h3>{cat.name}</h3>
+                            </div>
+                        </div>
+                        </>
+                        ))}
+                    </Slider>
+                }
             </div>
         </section>
-        
-        </>
-    )
+        )
 }
 
-export default ProductCategory
+export default Destination

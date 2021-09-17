@@ -14,6 +14,7 @@ import Register from './components/Register';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import Footer from './components/Footer';
+import City from './components/City';
 const client = new ApolloClient({
     uri:graphqlURL,
     cache:new InMemoryCache()
@@ -36,7 +37,8 @@ const App =() =>{
                                 <Route path="/login" component={Auth} />
                                 <Route path="/register" component={Register} />
                                 <Route path="/cart" component={Cart} />
-                                <Route path="/checkout" component={Checkout} />   
+                                <Route path="/checkout" component={Checkout} /> 
+                                <Route path="/cities/:name" component={City}  />
                             </Switch> 
                         </Route>
                 </Switch> 

@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
 import { useQuery,gql } from '@apollo/client';
 import {CircularProgress} from '@material-ui/core';
-import CategoryCard from './CategoryCard';
+import {Link} from 'react-router-dom';
 
 const cities = gql`
     query getCites{
@@ -59,17 +59,17 @@ const Destination = ()=>{
                 <CircularProgress />
                 :
                     <Slider {...settings}>
-                        {data.cities.map(cat=>(
-                            <>
+                        {data.cities.map(city=>(
+                            <Link to={`/cities/${city.name}`}>
                             <div className="destination__card">
                             <div className="image">
-                                <img src={`http://localhost:1337${cat.image[0].url}`} alt={cat.name} />
+                                <img src={`http://localhost:1337${city.image[0].url}`} alt={city.name} />
                             </div>
                             <div className="destination__title">
-                                <h3>{cat.name}</h3>
+                                <h3>{city.name}</h3>
                             </div>
                         </div>
-                        </>
+                        </Link>
                         ))}
                     </Slider>
                 }

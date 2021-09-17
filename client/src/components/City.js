@@ -24,7 +24,7 @@ const City = ()=>{
             <CircularProgress />
         ):
             <section className="city">
-                <img src={`http://localhost:1337${data.cities[0].image[3].url}`} alt={data.cities[0].name} />
+                <img src={`http://localhost:1337${data.cities[0].image[0].url}`} alt={data.cities[0].name} />
                 <div className="container">
                     <h3 className="title">{data.cities[0].name}</h3>
                     <p className="description"></p>
